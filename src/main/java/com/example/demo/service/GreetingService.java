@@ -1,7 +1,8 @@
 package com.example.demo.service;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -42,4 +43,10 @@ public class GreetingService implements IGreetingService {
 				.orElseThrow(()-> new RuntimeException("Greeting not found with ID: " + id));
 		return new GreetingDto(greeting.getId(),greeting.getMessage());
 	}
+	
+	 public List<GreetingDto> getAllGreetings() {
+	        return greetingRepository.findAll().stream()
+	                .map(greeting -> new GreetingDto(greeting.getId(), greeting.getMessage()))
+	                .collect(Collectors.toList());
+	    }
 }

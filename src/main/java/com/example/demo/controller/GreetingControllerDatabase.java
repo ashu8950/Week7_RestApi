@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +50,19 @@ public class GreetingControllerDatabase {
 	@GetMapping("/find")
 	public GreetingDto getGreetingById(@RequestParam Long id) {
 		return greetingService.getGreetingById(id);
+	}
+	
+	/*UC6->Ability for the Greeting
+
+	App to List all the
+	
+	Greeting Messages in
+	
+	the Repository*/
+	
+	@GetMapping("/all")
+	public List<GreetingDto> getAllGreetings() {
+	    return greetingService.getAllGreetings();
 	}
 
 }
