@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.GreetingDto;
@@ -22,6 +22,13 @@ public class GreetingService implements IGreetingService {
 	     this.greetingRepository = greetingRepository;
 	 }
 	 
+		/*UC4->Ability for the Greeting
+		
+		App to save the
+		
+		Greeting Message in the
+		
+		Repository*/
 	@Override
     public GreetingDto addGreet(User user) {
         String message = user.toString().isBlank() ? "Hello World" : String.format(template, user.toString());
