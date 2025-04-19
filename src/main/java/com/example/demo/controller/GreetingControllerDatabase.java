@@ -3,7 +3,9 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,5 +81,15 @@ public class GreetingControllerDatabase {
 	public GreetingDto updateGreeting(@RequestBody GreetingDto request) {
 	    return greetingService.updateGreeting(request.getId(), request.getMessage());
 	}
+	/*UC8-> Ability for the Greeting
 
+	App to delete a Greeting
+	
+	Messages in the
+	
+	Repository*/
+	@DeleteMapping("/delete/{id}")
+	public String deleteGreeting(@PathVariable Long id) {
+	    return greetingService.deleteGreeting(id);
+	}
 }

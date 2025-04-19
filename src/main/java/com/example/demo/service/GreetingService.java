@@ -65,4 +65,15 @@ public class GreetingService implements IGreetingService {
 		        throw new RuntimeException("Greeting with ID " + id + " not found.");
 		    }
 		}
+	 
+	 //delete data
+	 public String deleteGreeting(Long id) {
+		    if (greetingRepository.existsById(id)) {
+		        greetingRepository.deleteById(id);
+		        return "Greeting with ID " + id + " has been deleted.";
+		    } else {
+		        throw new RuntimeException("Greeting with ID " + id + " not found.");
+		    }
+		}
+
 }
