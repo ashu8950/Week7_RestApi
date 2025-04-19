@@ -17,6 +17,16 @@ public class GreetingControllerDatabase {
 	@Autowired
 	private GreetingService greetingService;
 	
+	/*UC3 ->Ability for the Greeting App to
+		give Greeting message with
+		
+		1. User First Name and Last
+		Name or
+		2. With just First Name or Last
+		Name based on User
+		attributes provides or
+		3. Just Hello World.*/
+	
 	@GetMapping("/greet")
 	public GreetingDto greeting(@RequestParam(value = "firstName", defaultValue = "World") String firstName,
 	                         @RequestParam(value = "lastName", defaultValue = "") String lastName) {
@@ -25,6 +35,19 @@ public class GreetingControllerDatabase {
 	    user.setLastName(lastName);
 
 	    return greetingService.addGreet(user);
+	}
+	
+	/*UC5->Ability for the Greeting
+
+		App to find a Greeting
+		
+		Message by Id in the
+		
+		Repository*/
+	
+	@GetMapping("/find")
+	public GreetingDto getGreetingById(@RequestParam Long id) {
+		return greetingService.getGreetingById(id);
 	}
 
 }

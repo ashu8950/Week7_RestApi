@@ -34,4 +34,12 @@ public class GreetingService implements IGreetingService {
         String message = user.toString().isBlank() ? "Hello World" : String.format(template, user.toString());
         return greetingRepository.save(new GreetingDto(counter.incrementAndGet(), message));
     }
+	 
+	
+	public GreetingDto getGreetingById(Long id) {
+		// TODO Auto-generated method stub
+		GreetingDto greeting = greetingRepository.findById(id)
+				.orElseThrow(()-> new RuntimeException("Greeting not found with ID: " + id));
+		return new GreetingDto(greeting.getId(),greeting.getMessage());
+	}
 }
